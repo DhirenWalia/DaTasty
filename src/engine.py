@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 from src.ingestion.loader import DataLoader
 from src.profiling.profiler import DataProfiler
-
+from pathlib import Path
 from src.quality.completeness import CompletenessChecker
 from src.quality.uniqueness import UniquenessChecker
 from src.quality.business_duplicates import BusinessDuplicateChecker
@@ -26,7 +26,7 @@ class DATATSTYEngine:
     def __init__(
         self,
         dataset_path,
-        rules_path=None
+        rules_path="../config/rules.json"
     ):
         self.dataset_path = dataset_path
 
@@ -42,6 +42,7 @@ class DATATSTYEngine:
 
         else:
             self.rules_path = rules_path
+            
     def run(self):
 
         loader = DataLoader()
