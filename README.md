@@ -92,6 +92,10 @@ Launch the dashboard frontend with Streamlit.
 streamlit run dashboard/app.py
 ```
 
+Or use the deployed app:
+
+https://dhirenwalia-datasty-dashboardapp-nnhcgu.streamlit.app/
+
 Upload a CSV or Excel file, then click `Analyze Dataset`.
 
 ## Configuration
