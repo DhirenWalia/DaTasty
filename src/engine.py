@@ -1,4 +1,4 @@
-from turtle import pd
+from pandas import pd
 
 from src.ingestion.loader import DataLoader
 from src.profiling.profiler import DataProfiler
