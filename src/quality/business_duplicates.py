@@ -8,6 +8,7 @@ class BusinessDuplicateChecker:
         self.df = df
 
         import json
+    
 
 class BusinessDuplicateChecker:
 
