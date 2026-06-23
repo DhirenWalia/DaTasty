@@ -1,5 +1,5 @@
 import pandas as pd
-
+from pathlib import Path
 from src.ingestion.loader import DataLoader
 from src.profiling.profiler import DataProfiler
 
@@ -22,10 +22,20 @@ class DATATSTYEngine:
     def __init__(
         self,
         dataset_path,
-        rules_path="../config/rules.json"
+        rules_path=None
     ):
         self.dataset_path = dataset_path
-        self.rules_path = rules_path
+
+        if rules_path is None:
+            project_root = Path(__file__).resolve().parent.parent
+
+            self.rules_path = (
+                project_root
+                / "config"
+                / "rules.json"
+            )
+        else:
+            self.rules_path = rules_path
 
     def run(self):
 
@@ -49,6 +59,11 @@ class DATATSTYEngine:
             UniquenessChecker(df)
             .analyze_duplicates()
         )
+        import os
+
+        print("Current Directory:", os.getcwd())
+        print("Rules Path:", self.rules_path)
+        print("Exists:", os.path.exists(self.rules_path))
 
         business_duplicate_report = (
             BusinessDuplicateChecker(
