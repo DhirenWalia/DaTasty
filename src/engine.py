@@ -1,4 +1,4 @@
-from pandas import pd
+import pandas as pd
 
 from src.ingestion.loader import DataLoader
 from src.profiling.profiler import DataProfiler
