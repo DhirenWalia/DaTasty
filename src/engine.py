@@ -22,7 +22,7 @@ class DATATSTYEngine:
     def __init__(
         self,
         dataset_path,
-        rules_path="config/rules.json"
+        rules_path="../config/rules.json"
     ):
         self.dataset_path = dataset_path
         self.rules_path = rules_path
