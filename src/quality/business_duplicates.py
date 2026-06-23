@@ -7,9 +7,15 @@ class BusinessDuplicateChecker:
 
         self.df = df
 
+        import os
+
+        print("business_duplicates.py")
+        print("cwd =", os.getcwd())
+        print("rules_path =", rules_path)
+        print("exists =", os.path.exists(rules_path))
+
         with open(rules_path, "r") as file:
             self.rules = json.load(file)
-
 
     def analyze(self):
 
