@@ -1,0 +1,145 @@
+{
+    "Customer_ID": {
+        "datatype": "text",
+        "required": true,
+        "business_key": true,
+        "unique": true,
+        "validation": {
+            "pattern": "^CUST[0-9]+$"
+        },
+        "cleaning": {
+            "enabled": false
+        }
+    },
+
+    "Customer_Name": {
+        "datatype": "text",
+        "required": true,
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "Email": {
+        "datatype": "email",
+        "required": true,
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "lower"
+            ]
+        }
+    },
+
+    "Phone": {
+        "datatype": "phone",
+        "required": false,
+        "cleaning": {
+            "enabled": true,
+            "remove_symbols": true,
+            "keep_last_digits": 10
+        }
+    },
+
+    "Age": {
+        "datatype": "numeric",
+        "validation": {
+            "min": 18,
+            "max": 100
+        }
+    },
+
+    "Gender": {
+        "datatype": "text",
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "City": {
+        "datatype": "text",
+        "consistency": {
+            "enabled": true,
+            "method": "fuzzy_match"
+        },
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "State": {
+        "datatype": "text",
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "Country": {
+        "datatype": "text",
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "Join_Date": {
+        "datatype": "date",
+        "cleaning": {
+            "enabled": true,
+            "date_format": "%Y-%m-%d"
+        }
+    },
+
+    "Customer_Segment": {
+        "datatype": "text",
+        "cleaning": {
+            "enabled": true,
+            "pipeline": [
+                "trim",
+                "title"
+            ]
+        }
+    },
+
+    "Annual_Income": {
+        "datatype": "numeric",
+        "validation": {
+            "min": 0
+        }
+    },
+
+    "Transaction_Count": {
+        "datatype": "numeric",
+        "validation": {
+            "min": 0
+        }
+    },
+
+    "Customer_Score": {
+        "datatype": "numeric",
+        "validation": {
+            "min": 0,
+            "max": 100
+        }
+    }
+}

@@ -1,0 +1,147 @@
+import sys
+from pathlib import Path
+import tempfile
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+import streamlit as st
+from src.engine import DATATSTYEngine
+from data_loader import load_excel
+from kpi import extract_kpis, dimension_scores
+from charts import dimension_bar, severity_donut, dts_comparison_chart, issue_distribution
+from theme import apply_theme
+
+st.set_page_config(
+    page_title="DATATSTY AI Data Readiness Dashboard",
+    layout="wide",
+)
+
+apply_theme()
+
+st.title("DATATSTY AI DATA READINESS ASSESSMENT")
+st.divider()
+
+st.subheader("Upload Dataset")
+
+uploaded_file = st.file_uploader(
+    "Upload CSV or Excel File",
+    type=["csv", "xlsx", "xls"],
+)
+
+if uploaded_file is not None and st.button("Analyze Dataset", type="primary"):
+    with st.spinner("Running DATATSTY Analysis..."):
+        temp_dir = Path(tempfile.gettempdir())
+        temp_file = temp_dir / uploaded_file.name
+
+        with open(temp_file, "wb") as f:
+            f.write(uploaded_file.getbuffer())
+
+        engine = DATATSTYEngine(str(temp_file))
+        result = engine.run()
+
+    st.session_state["before_dts"] = result["before_dts"]
+    st.session_state["after_dts"] = result["after_dts"]
+    st.session_state["improvement"] = result["improvement"]
+
+    st.success("Analysis Completed Successfully!")
+    st.metric("DTS Score", result["dts_score"])
+    st.metric("AI Status", result["status"])
+    st.info(f"Excel Report: {result['report_path']}")
+    st.info(f"Cleaned Dataset: {result['cleaned_path']}")
+
+sheets = load_excel()
+kpis = extract_kpis(sheets)
+findings = sheets["Quality_Findings"]
+
+st.sidebar.header("DATATSTY Filters")
+
+severity = st.sidebar.selectbox(
+    "Severity",
+    ["All"] + sorted(findings["Severity"].dropna().unique()),
+)
+
+dimension = st.sidebar.selectbox(
+    "Dimension",
+    ["All"] + sorted(findings["Dimension"].dropna().unique()),
+)
+
+filtered = findings.copy()
+if severity != "All":
+    filtered = filtered[filtered["Severity"] == severity]
+if dimension != "All":
+    filtered = filtered[filtered["Dimension"] == dimension]
+
+# =======================
+# KPI ROW
+# =======================
+col1, col2, col3, col4, col5 = st.columns(5)
+
+before_dts = st.session_state.get("before_dts", kpis["dts_score"])
+after_dts = st.session_state.get("after_dts", kpis["dts_score"])
+improvement = st.session_state.get("improvement", 0)
+
+col1.metric("Before DTS", round(before_dts, 2))
+col2.metric("After DTS", round(after_dts, 2))
+col3.metric("Improvement", f"+{round(improvement, 2)}")
+col4.metric("AI Status", kpis["ai_status"])
+col5.metric("Critical Issues", kpis["critical_issues"])
+
+# =======================
+# CHARTS
+# =======================
+left, right = st.columns(2)
+
+dimension_df = dimension_scores(sheets)
+
+with left:
+    st.plotly_chart(
+        dimension_bar(dimension_df),
+        use_container_width=True,
+    )
+
+with right:
+    st.plotly_chart(
+        severity_donut(filtered),
+        use_container_width=True,
+    )
+
+st.divider()
+st.subheader("Data Quality Improvement")
+
+st.plotly_chart(
+    dts_comparison_chart(before_dts, after_dts),
+    use_container_width=True,
+)
+
+st.divider()
+st.plotly_chart(
+    issue_distribution(filtered),
+    use_container_width=True
+)
+
+st.caption(
+    "DATATSTY v1.0 | AI Data Readiness Assessment Platform © 2026 DATATSTY Analytics"
+)
+
+st.subheader(
+    "Issue Explorer"
+)
+
+
+st.dataframe(
+    filtered,
+    use_container_width=True
+)
+csv = filtered.to_csv(
+    index=False
+).encode("utf-8")
+
+
+st.download_button(
+    "Download Filtered Issues CSV",
+    data=csv,
+    file_name="DATATSTY_Filtered_Issues.csv",
+    mime="text/csv"
+)

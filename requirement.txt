@@ -1,0 +1,21 @@
+pandas
+numpy
+openpyxl
+sqlalchemy
+
+# Dashboard Framework
+streamlit
+
+# Visualizations
+plotly
+matplotlib
+seaborn
+
+# Data processing
+scikit-learn
+
+# Date and time handling
+python-dateutil
+
+# Excel report generation
+xlsxwriter

@@ -1,0 +1,24 @@
+{
+    "dataset": {
+        "name": "DATATSTY_Enterprise_Benchmark_v1.csv",
+        "rows": 106000,
+        "columns": 15
+    },
+
+    "dts": {
+        "score": 97.1,
+        "status": "AI Ready",
+
+        "dimensions": {
+            "Completeness": 98.09,
+            "Uniqueness": 97.33,
+            "Validity": 98.64,
+            "Consistency": 92.23,
+            "Accuracy": 99.59
+        }
+    },
+
+    "issues": {
+        "critical": 2
+    }
+}

@@ -1,0 +1,100 @@
+import pandas as pd
+
+
+class DataCleaner:
+
+    def __init__(self, df):
+        self.original_df = df.copy()
+        self.df = df.copy()
+
+        self.cleaning_log = []
+
+
+    def clean_data(self):
+
+        self.remove_duplicates()
+
+        self.standardize_text()
+
+        self.convert_datatypes()
+
+        return self.df, self.cleaning_log
+
+
+    def remove_duplicates(self):
+
+        before = len(self.df)
+
+        self.df.drop_duplicates(inplace=True)
+
+        removed = before - len(self.df)
+
+
+        self.cleaning_log.append({
+            "Action": "Duplicate Removal",
+            "Records Affected": removed
+        })
+
+
+    def standardize_text(self):
+
+        text_columns = self.df.select_dtypes(
+            include=["object", "string"]
+        ).columns
+
+
+        for column in text_columns:
+
+            self.df[column] = (
+                self.df[column]
+                .astype(str)
+                .str.strip()
+                .str.title()
+            )
+
+
+        self.cleaning_log.append({
+            "Action": "Text Standardization",
+            "Records Affected": "Multiple Columns"
+        })
+
+
+    def convert_datatypes(self):
+
+        for column in self.df.columns:
+
+            try:
+
+                converted = pd.to_numeric(
+                    self.df[column]
+                )
+
+
+                if not converted.equals(
+                    self.df[column]
+                ):
+
+                    self.df[column] = converted
+
+
+            except Exception:
+                continue
+
+
+        self.cleaning_log.append({
+            "Action": "Data Type Conversion",
+            "Records Affected": "Automatic"
+        })
+
+
+    def save_clean_data(
+        self,
+        path="data/output/cleaned_dataset.csv"
+    ):
+
+        self.df.to_csv(
+            path,
+            index=False
+        )
+
+        return path
