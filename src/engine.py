@@ -19,6 +19,10 @@ from src.reporting.report_generator import ReportGenerator
 
 class DATATSTYEngine:
 
+    from pathlib import Path
+
+class DATATSTYEngine:
+
     def __init__(
         self,
         dataset_path,
@@ -27,16 +31,17 @@ class DATATSTYEngine:
         self.dataset_path = dataset_path
 
         if rules_path is None:
+
             project_root = Path(__file__).resolve().parent.parent
 
-            self.rules_path = (
+            self.rules_path = str(
                 project_root
                 / "config"
                 / "rules.json"
             )
+
         else:
             self.rules_path = rules_path
-
     def run(self):
 
         loader = DataLoader()

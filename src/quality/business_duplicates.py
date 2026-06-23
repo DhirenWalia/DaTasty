@@ -7,13 +7,16 @@ class BusinessDuplicateChecker:
 
         self.df = df
 
-        import os
+        import json
 
-        print("business_duplicates.py")
-        print("cwd =", os.getcwd())
-        print("rules_path =", rules_path)
-        print("exists =", os.path.exists(rules_path))
+class BusinessDuplicateChecker:
 
+    def __init__(self, df, rules_path):
+
+        self.df = df
+
+        with open(rules_path, "r") as file:
+            self.rules = json.load(file)
         with open(rules_path, "r") as file:
             self.rules = json.load(file)
 
