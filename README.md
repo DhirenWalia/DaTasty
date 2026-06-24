@@ -33,7 +33,6 @@
 - [Output Files](#output-files)
 - [Tech Stack](#tech-stack)
 - [Limitations](#limitations)
-- [Roadmap](#roadmap)
 - [What I Learned](#what-i-learned)
 - [Contributing](#contributing)
 - [License](#license)
@@ -320,20 +319,6 @@ DaTasty is currently designed for **structured, tabular datasets** and works bes
 
 ---
 
-## Roadmap
-
-- [ ] Custom business rule engine
-- [ ] Industry-specific validation templates
-- [ ] Reference-data integration for true accuracy checks
-- [ ] Multi-dataset reconciliation
-- [ ] Data lineage tracking
-- [ ] Broader data governance features
-- [ ] API integration
-- [ ] Real-time monitoring
-- [ ] User authentication and access control
-- [ ] Cloud-native deployment architecture
-
----
 
 ## What I Learned
 
