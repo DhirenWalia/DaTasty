@@ -364,6 +364,6 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 
 Aspiring Data Analyst · BBA Student
 
-[GitHub](https://github.com/DhirenWalia) · [LinkedIn](#) · [Live Demo](https://datasty.streamlit.app/)
+[GitHub](https://github.com/DhirenWalia) · [LinkedIn](https://www.linkedin.com/in/dhiren-walia/)
 
 ⭐ If this project was useful or interesting, consider starring the repo — it helps a lot.
