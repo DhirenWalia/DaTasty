@@ -88,12 +88,8 @@ The ceiling of any analysis — however sophisticated — is set by the quality 
 <img width="1918" height="887" alt="Screenshot 2026-06-24 150646" src="https://github.com/user-attachments/assets/38e1a888-b697-4fc8-a170-6f03ab61e8b1" />
 *Upload interface — drop in a CSV or Excel file and run the full analysis with one click.*
 
-### Dataset Profiling
-![Dataset Profile](docs/screenshots/dataset_profile.png)
-*Row/column counts, memory footprint, and data type breakdown generated automatically.*
-
 ### Quality Findings
-![Quality Findings](docs/screenshots/quality_findings.png)
+<img width="1918" height="887" alt="Screenshot 2026-06-24 150910" src="https://github.com/user-attachments/assets/3facadf6-b5fc-4a91-ba67-6a93318bc8a9" />
 *Filterable issue explorer across all five quality dimensions, with severity tagging.*
 
 ### DTS Score & Executive Summary
