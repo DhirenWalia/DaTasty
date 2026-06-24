@@ -1,127 +1,380 @@
-# DaTasty
+<div align="center">
+
+# 🍽️ DATATSTY
+
+### AI Data Readiness & Quality Assessment Platform
+
+*Profile. Score. Clean. Report. — Before your data ever reaches Analytics, BI, ML, or GenAI.*
+
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Engine-150458?style=flat&logo=pandas&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat)
+
+**[🚀 Live Demo](https://datasty.streamlit.app/)** · **[📂 Source Code](#project-structure)** · **[📊 Methodology](#how-the-dts-score-works)**
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Problem Statement](#problem-statement)
+- [Why Data Quality Matters](#why-data-quality-matters)
+- [Demo](#demo)
+- [Key Features](#key-features)
+- [How It Works](#how-it-works)
+- [How the DTS Score Works](#how-the-dts-score-works)
+- [Quality Dimensions Framework](#quality-dimensions-framework)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Configuration](#configuration)
+- [Output Files](#output-files)
+- [Tech Stack](#tech-stack)
+- [Limitations](#limitations)
+- [Roadmap](#roadmap)
+- [What I Learned](#what-i-learned)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+
+---
 
 ## Overview
 
-DaTasty is an AI-enabled data readiness assessment platform built to profile, validate, score, clean, and report on tabular datasets. It supports CSV and Excel inputs and generates a detailed Excel report along with cleaned dataset output.
+**DATATSTY** is an end-to-end data quality and readiness assessment platform built in Python and Streamlit.
+
+Before a dataset is used for **Analytics, Business Intelligence, Machine Learning, or Generative AI**, DATATSTY profiles it, audits it across five quality dimensions, scores it with a single composite metric (the **DTS — DATATSTY Trust Score**), cleans it according to configurable rules, and generates an executive-ready Excel report — all in one run, with no code required from the end user.
+
+> The core idea: **don't build dashboards or train models on data you haven't audited.** Find the problems before they find you.
+
+---
+
+## Problem Statement
+
+Organizations collect data from spreadsheets, CRMs, ERPs, forms, APIs, and manual entry — and that data is routinely *assumed* to be correct without ever being audited.
+
+Common questions teams struggle to answer quickly:
+
+- Is this dataset complete enough to report on?
+- Are there duplicate or conflicting records?
+- Are values formatted consistently across the dataset?
+- Can this data be trusted for a business decision?
+- Is it ready to train a model — or to feed into an LLM pipeline?
+- Out of everything wrong with this data, what should be fixed *first*?
+
+Answering these manually is slow, inconsistent, and easy to skip under deadline pressure. Most commercial data-quality platforms that answer these questions are also expensive and out of reach for students, small teams, and individual analysts. DATATSTY is an attempt to make a transparent, rules-based version of that workflow freely accessible.
+
+---
+
+## Why Data Quality Matters
+
+| Domain | Impact of Poor Data Quality |
+|---|---|
+| **Analytics** | Incorrect dashboards and misleading KPIs |
+| **Business Intelligence** | Business decisions made on inaccurate information |
+| **Machine Learning** | Models trained on dirty data generalize poorly |
+| **Generative AI** | LLMs and AI systems produce unreliable outputs when fed unreliable context |
+| **Operations** | Duplicate and inconsistent records create manual rework and inefficiency |
+
+The ceiling of any analysis — however sophisticated — is set by the quality of the data underneath it. DATATSTY exists to raise that floor *before* the analysis starts.
+
+---
+
+## Demo
+
+> 📸 **Screenshots go here.** Add the images below to a `docs/screenshots/` folder in the repo and they will render automatically once committed.
+
+### Dashboard Home
+![Dashboard Home](docs/screenshots/dashboard_home.png)
+*Upload interface — drop in a CSV or Excel file and run the full analysis with one click.*
+
+### Dataset Profiling
+![Dataset Profile](docs/screenshots/dataset_profile.png)
+*Row/column counts, memory footprint, and data type breakdown generated automatically.*
+
+### Quality Findings
+![Quality Findings](docs/screenshots/quality_findings.png)
+*Filterable issue explorer across all five quality dimensions, with severity tagging.*
+
+### DTS Score & Executive Summary
+![DTS Score](docs/screenshots/dts_score_summary.png)
+*Composite trust score, AI-readiness status, and dimension-level breakdown.*
+
+### Before vs. After Cleaning
+![Before vs After](docs/screenshots/before_after_cleaning.png)
+*DTS score comparison showing measurable improvement after automated cleaning.*
+
+### Executive Excel Report
+![Excel Report](docs/screenshots/excel_report.png)
+*Auto-generated, styled Excel workbook — ready to forward to a stakeholder.*
+
+---
 
 ## Key Features
 
-- Data ingestion from CSV and Excel files
-- Dataset profiling and metadata extraction
-- Data quality checks for:
-  - Completeness (missing values)
-  - Uniqueness and duplicate detection
-  - Business key duplicate analysis
-  - Validity against configurable rules
-  - Consistency checks
-  - Accuracy and outlier detection
-- DTS scoring for AI readiness
-- Business recommendations based on quality findings
-- Rule-driven data cleaning and transformation
-- Excel report generation in `data/output/`
-- Optional Streamlit dashboard frontend
+### 🔎 Dataset Profiling
+Row count, column count, data types, memory usage, and per-column metadata — computed automatically on load.
 
-## Repository Structure
+### ✅ Multi-Dimensional Quality Assessment
+Evaluates the dataset across the five DAMA-aligned data quality dimensions:
 
-- `main.py` - CLI entry point for running the analysis pipeline
-- `src/engine.py` - Core engine class for end-to-end dataset processing
-- `src/ingestion/loader.py` - Data loading utilities for CSV and Excel
-- `src/profiling/profiler.py` - Dataset profiling and metadata generation
-- `src/quality/` - Data quality modules for completeness, uniqueness, validity, consistency, and accuracy
-- `src/scoring/dts_calculator.py` - DTS scoring engine for dataset readiness
-- `src/recommendations/advisor.py` - Business recommendation generation
-- `src/cleaning/smart_cleaner.py` - Rule-driven cleaning and normalization
-- `src/reporting/report_generator.py` - Excel report generation logic
-- `dashboard/app.py` - Streamlit dashboard frontend
-- `config/rules.json` - Data validation and cleaning rules
-- `data/` - Sample input, benchmark data, and generated outputs
+- **Completeness** — missing value detection per column
+- **Uniqueness** — exact duplicate record detection
+- **Validity** — format and range validation against configurable rules
+- **Consistency** — formatting and casing inconsistencies across fields
+- **Accuracy Proxy** — statistical outlier detection (IQR method) as a proxy for likely-incorrect values
 
-## Installation
+> **Note:** True accuracy requires an external source of truth. DATATSTY evaluates an *accuracy proxy* via anomaly detection rather than claiming ground-truth accuracy — this distinction is intentional and stated transparently in the scoring.
 
-1. Create or activate a Python virtual environment.
+### 🎯 DATATSTY Trust Score (DTS)
+A single 0–100 composite score that summarizes overall dataset readiness, combining all five dimensions into one number you can track over time or compare across datasets.
 
-```bash
-python -m venv datatsty_env
-source datatsty_env/Scripts/activate   # Windows PowerShell
-# or
-source datatsty_env/bin/activate      # macOS/Linux
+### 🧹 Rule-Driven Automated Cleaning
+Configurable, transparent cleaning operations: duplicate removal, string normalization (trim/case), phone number standardization, and date format correction — all driven by a single JSON rules file, not hardcoded logic.
+
+### 📑 Executive Reporting
+A styled, multi-sheet Excel report (Executive Summary, Dataset Profile, Quality Findings, Recommendations) generated automatically — formatted for a non-technical stakeholder to open and act on.
+
+### 📊 Interactive Dashboard
+A Streamlit interface that lets anyone upload a dataset, run the full pipeline, and explore results visually — zero code required.
+
+---
+
+## How It Works
+
+```mermaid
+flowchart TD
+    A["Raw Dataset<br/>(CSV / Excel)"] --> B[Data Ingestion]
+    B --> C[Dataset Profiling]
+    C --> D[Quality Assessment]
+    D --> D1[Completeness]
+    D --> D2[Uniqueness]
+    D --> D3[Validity]
+    D --> D4[Consistency]
+    D --> D5[Accuracy Proxy]
+    D1 --> E[DTS Score Calculation]
+    D2 --> E
+    D3 --> E
+    D4 --> E
+    D5 --> E
+    E --> F[Business Recommendations]
+    E --> G[Rule-Based Cleaning Engine]
+    G --> H[Post-Cleaning Reassessment]
+    H --> I["Excel Report + Dashboard<br/>(Before / After Comparison)"]
+    F --> I
 ```
 
-2. Install requirements.
+The goal at every stage is the same: **surface issues clearly enough that a human can decide what to do about them.** DATATSTY does not replace domain expertise — it gives domain experts a faster starting point.
 
-```bash
-pip install -r requirement.txt
+---
+
+## How the DTS Score Works
+
+Each quality dimension produces a score out of 100 (`100 − average issue %` across all flagged columns). These are combined into the final DTS using fixed weights:
+
+| Dimension | Weight | What It Measures |
+|---|---|---|
+| Completeness | 25% | % of missing values per column |
+| Uniqueness | 20% | % of duplicate records in the dataset |
+| Validity | 20% | % of values violating format/range rules |
+| Consistency | 20% | % of formatting inconsistencies (casing, whitespace, etc.) |
+| Accuracy Proxy | 15% | % of statistical outliers (IQR method) |
+
+```
+DTS Score = Σ (Dimension Score × Weight)
 ```
 
-## Requirements
+The final score maps to an AI-readiness status:
 
-The project dependencies are listed in `requirement.txt` and include:
+| DTS Score | Status |
+|---|---|
+| 90 – 100 | 🟢 AI Ready |
+| 75 – 89 | 🟢 Good |
+| 60 – 74 | 🟡 Needs Attention |
+| Below 60 | 🔴 Not AI Ready |
 
-- pandas
-- numpy
-- openpyxl
-- sqlalchemy
-- streamlit
-- plotly
-- matplotlib
-- seaborn
-- scikit-learn
-- python-dateutil
-- xlsxwriter
+The score isn't designed to *guarantee* correctness — it's designed to give a consistent, repeatable way to compare datasets and track measurable improvement before and after cleaning.
 
-## Usage
+---
 
-### CLI Runner
+## Quality Dimensions Framework
 
-Run the main Python application and provide the path to your dataset when prompted.
+| Dimension | Purpose |
+|---|---|
+| **Completeness** | Detect missing information |
+| **Uniqueness** | Detect duplicate records |
+| **Validity** | Detect invalid formats and out-of-range values |
+| **Consistency** | Detect logical and formatting inconsistencies |
+| **Accuracy Proxy** | Detect suspicious patterns and statistical anomalies |
 
-```bash
-python main.py
+Each dimension is evaluated independently, then combined into the single DTS score described above.
+
+---
+
+## Project Structure
+
 ```
-
-Example input paths:
-
-- `data/input/customer_data.csv`
-- `data/benchmark/DATATSTY_Enterprise_Benchmark_v1.csv`
-
-### Streamlit Dashboard
-
-Launch the dashboard frontend with Streamlit.
-
-```bash
-streamlit run dashboard/app.py
+DATATSTY/
+├── main.py                     # CLI entry point
+├── requirements.txt            # Project dependencies
+├── config/
+│   └── rules.json               # Column-level validation & cleaning rules
+├── src/
+│   ├── engine.py                 # Orchestrates the full end-to-end pipeline
+│   ├── ingestion/
+│   │   └── loader.py             # CSV / Excel loading
+│   ├── profiling/
+│   │   └── profiler.py           # Dataset metadata & profiling
+│   ├── quality/
+│   │   ├── completeness.py
+│   │   ├── uniqueness.py
+│   │   ├── business_duplicates.py
+│   │   ├── validity.py
+│   │   ├── consistency.py
+│   │   └── accuracy.py
+│   ├── scoring/
+│   │   └── dts_calculator.py     # DTS score engine
+│   ├── recommendations/
+│   │   └── advisor.py            # Business-impact recommendation generator
+│   ├── cleaning/
+│   │   └── smart_cleaner.py      # Rule-driven cleaning engine
+│   └── reporting/
+│       └── report_generator.py   # Styled Excel report generation
+├── dashboard/
+│   ├── app.py                    # Streamlit dashboard
+│   ├── data_loader.py
+│   ├── kpi.py
+│   ├── charts.py
+│   └── theme.py
+├── scripts/
+│   └── generate_benchmark.py     # Synthetic benchmark dataset generator
+└── data/
+    ├── input/                    # Sample datasets
+    ├── benchmark/                 # Synthetic test/demo datasets
+    └── output/                    # Generated reports & cleaned data
 ```
-
-Or use the deployed app:
-
-https://datasty.streamlit.app/
-
-Upload a CSV or Excel file, then click `Analyze Dataset`.
+---
 
 ## Configuration
 
-The `config/rules.json` file defines validation and cleaning rules per column. Sample rule types include:
+All validation and cleaning behavior is driven by `config/rules.json` — no logic needs to be hardcoded or changed in source files to support a new column.
 
-- `datatype` checks
-- required fields
-- business key and uniqueness flags
-- regex validation patterns
-- cleaning pipeline steps such as `trim`, `lower`, `upper`, and `title`
-- phone standardization and date formatting
+```json
+"Email": {
+  "datatype": "email",
+  "required": true,
+  "cleaning": {
+    "enabled": true,
+    "pipeline": ["trim", "lower"]
+  }
+}
+```
 
-## Output
+Supported rule types per column include:
 
-Generated outputs are written to `data/output/`:
+- `datatype` checks (`numeric`, `email`, and more in progress)
+- `required` and `business_key` flags
+- `validation` constraints (`min`, `max`, regex `pattern`)
+- `consistency` checks (formatting/casing)
+- `cleaning` pipelines (`trim`, `lower`, `upper`, `title`)
+- Phone number and date standardization rules
 
-- `DATATSTY_Enterprise_Report.xlsx` — full audit and quality findings report
-- `cleaned_dataset.csv` — cleaned dataset after applying rules
+---
 
-## Notes
+## Output Files
 
-- The engine currently supports CSV and Excel file formats only.
-- The cleaning engine applies rules only for columns defined in `config/rules.json`.
-- The DTS score is computed from completeness, uniqueness, validity, consistency, and accuracy dimensions.
+Every run generates outputs:
+
+| File | Description |
+|---|---|
+| Excel Report | Full audit: profile, quality findings, DTS score, recommendations |
+| Cleaned Dataset | Cleaned dataset after all enabled rules are applied |
+
+---
+
+## Tech Stack
+
+- **Python** — core language
+- **Pandas / NumPy** — data processing and statistical analysis
+- **Streamlit** — interactive dashboard
+- **Plotly** — charting and visualization
+- **OpenPyXL** — styled Excel report generation
+- **Scikit-learn** — supporting analytical utilities
+
+---
+
+## Limitations
+
+DATATSTY is currently designed for **structured, tabular datasets** and works best with clearly defined columns (e.g. customer IDs, names, emails, phone numbers, dates, locations, transaction data).
+
+- **Limited domain knowledge** — the platform does not infer industry-specific business rules automatically; rules must be configured.
+- **No external verification** — true accuracy (vs. an accuracy *proxy*) requires a trusted external reference source, which is out of scope today.
+- **Rule-based cleaning only** — cleaning logic follows predefined rules rather than adaptive or ML-based correction.
+- **Structured data only** — unstructured inputs (PDFs, images, audio, free text) are not supported.
+- **Single dataset analysis** — no cross-system or cross-dataset reconciliation yet.
+
+---
+
+## Roadmap
+
+- [ ] Custom business rule engine
+- [ ] Industry-specific validation templates
+- [ ] Reference-data integration for true accuracy checks
+- [ ] Multi-dataset reconciliation
+- [ ] Data lineage tracking
+- [ ] Broader data governance features
+- [ ] API integration
+- [ ] Real-time monitoring
+- [ ] User authentication and access control
+- [ ] Cloud-native deployment architecture
+
+---
+
+## What I Learned
+
+This project was built as a hands-on way to understand real-world data quality challenges from the ground up, including:
+
+- Practical data profiling techniques
+- Designing and implementing multi-dimensional data quality checks
+- Building a composite scoring model (DTS) and justifying its weighting
+- Rule-driven cleaning systems vs. hardcoded one-off fixes
+- Automated report generation for non-technical stakeholders
+- Dashboard development with Streamlit and Plotly
+- Structuring a modular Python project rather than a single script
+- Generating realistic synthetic benchmark data for testing
+- Translating technical findings into business-friendly language and recommendations
+
+The single biggest takeaway: **cleaning and validating data is consistently harder and more time-consuming than the modeling or reporting that follows it** — and it's the step most often skipped.
+
+---
 
 ## Contributing
 
-To extend the platform, add new quality checks in `src/quality/`, update scoring logic in `src/scoring/dts_calculator.py`, or enhance report generation in `src/reporting/report_generator.py`.
+Contributions, suggestions, and feedback are welcome. To extend the platform:
+
+- Add new quality checks under `src/quality/`
+- Extend scoring logic in `src/scoring/dts_calculator.py`
+- Enhance reporting in `src/reporting/report_generator.py`
+
+Feel free to open an issue or submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the **MIT License** — see [LICENSE](LICENSE) for details.
+
+---
+
+## Author
+
+**Dhiren Walia**
+
+Aspiring Data Analyst · BBA Student
+
+[GitHub](https://github.com/DhirenWalia) · [LinkedIn](#) · [Live Demo](https://datasty.streamlit.app/)
+
+⭐ If this project was useful or interesting, consider starring the repo — it helps a lot.
