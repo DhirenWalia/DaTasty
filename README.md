@@ -28,7 +28,6 @@
 - [How the DTS Score Works](#how-the-dts-score-works)
 - [Quality Dimensions Framework](#quality-dimensions-framework)
 - [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
 - [Configuration](#configuration)
 - [Output Files](#output-files)
 - [Tech Stack](#tech-stack)
