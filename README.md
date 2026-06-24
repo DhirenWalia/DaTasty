@@ -86,6 +86,7 @@ The ceiling of any analysis — however sophisticated — is set by the quality 
 
 ### Dashboard Home📸
 <img width="1918" height="887" alt="Screenshot 2026-06-24 150646" src="https://github.com/user-attachments/assets/38e1a888-b697-4fc8-a170-6f03ab61e8b1" />
+
 **Upload interface — drop in a CSV or Excel file and run the full analysis with one click.**
 
 ### Quality Findings
