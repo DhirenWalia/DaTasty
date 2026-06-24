@@ -95,7 +95,7 @@ The ceiling of any analysis — however sophisticated — is set by the quality 
 ### Executive Summary
 <img width="1520" height="317" alt="Screenshot 2026-06-24 150950" src="https://github.com/user-attachments/assets/e1475558-6e3b-4d40-9be9-31dfa28432d2" />
 *Composite trust score, AI-readiness status, and dimension-level breakdown.*
-<img width="1520" height="317" alt="Screenshot 2026-06-24 150950" src="https://github.com/user-attachments/assets/7ff0c3e4-13ca-4cb1-9c0e-2543ecfe2e4d" />
+<img width="1511" height="647" alt="Screenshot 2026-06-24 151017" src="https://github.com/user-attachments/assets/55211db3-6fc2-439a-adf5-68a05cfcfc4d" />
 *DTS score comparison showing measurable improvement after automated cleaning.*
 <img width="1477" height="567" alt="Screenshot 2026-06-24 151038" src="https://github.com/user-attachments/assets/80545d01-f79d-48f3-9552-ee2e313cf216" />
 
