@@ -22,7 +22,7 @@
 - [Overview](#overview)
 - [Problem Statement](#problem-statement)
 - [Why Data Quality Matters](#why-data-quality-matters)
-- [Demo](#demo📸)
+- [Demo](#demo)
 - [Key Features](#key-features)
 - [How It Works](#how-it-works)
 - [How the DTS Score Works](#how-the-dts-score-works)
@@ -82,9 +82,9 @@ The ceiling of any analysis — however sophisticated — is set by the quality 
 
 ---
 
-## Demo 📸
+## Demo
 
-### Dashboard Home
+### Dashboard Home📸
 <img width="1918" height="887" alt="Screenshot 2026-06-24 150646" src="https://github.com/user-attachments/assets/38e1a888-b697-4fc8-a170-6f03ab61e8b1" />
 *Upload interface — drop in a CSV or Excel file and run the full analysis with one click.*
 
@@ -92,16 +92,19 @@ The ceiling of any analysis — however sophisticated — is set by the quality 
 <img width="1918" height="887" alt="Screenshot 2026-06-24 150910" src="https://github.com/user-attachments/assets/3facadf6-b5fc-4a91-ba67-6a93318bc8a9" />
 *Filterable issue explorer across all five quality dimensions, with severity tagging.*
 
-### DTS Score & Executive Summary
-![DTS Score](docs/screenshots/dts_score_summary.png)
+### Executive Summary
+<img width="1520" height="317" alt="Screenshot 2026-06-24 150950" src="https://github.com/user-attachments/assets/e1475558-6e3b-4d40-9be9-31dfa28432d2" />
 *Composite trust score, AI-readiness status, and dimension-level breakdown.*
-
-### Before vs. After Cleaning
-![Before vs After](docs/screenshots/before_after_cleaning.png)
+<img width="1520" height="317" alt="Screenshot 2026-06-24 150950" src="https://github.com/user-attachments/assets/7ff0c3e4-13ca-4cb1-9c0e-2543ecfe2e4d" />
 *DTS score comparison showing measurable improvement after automated cleaning.*
+<img width="1477" height="567" alt="Screenshot 2026-06-24 151038" src="https://github.com/user-attachments/assets/80545d01-f79d-48f3-9552-ee2e313cf216" />
 
-### Executive Excel Report
-![Excel Report](docs/screenshots/excel_report.png)
+### Quality Findings
+<img width="1511" height="707" alt="Screenshot 2026-06-24 151110" src="https://github.com/user-attachments/assets/61155f94-04b0-4ba8-b187-10aac0b9ae7a" />
+<img width="1502" height="627" alt="Screenshot 2026-06-24 151132" src="https://github.com/user-attachments/assets/5255e522-126a-46f0-a9d6-2f3b883ccdf7" />
+
+### Recommendations
+<img width="1487" height="630" alt="Screenshot 2026-06-24 151212" src="https://github.com/user-attachments/assets/e924b147-e679-45c1-b0b3-cffa383f5142" />
 *Auto-generated, styled Excel workbook — ready to forward to a stakeholder.*
 
 ---
