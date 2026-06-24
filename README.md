@@ -1,6 +1,5 @@
 <div align="center">
-
-# 🍽️ DATATSTY
+# DATASTY
 
 ### AI Data Readiness & Quality Assessment Platform
 
@@ -12,7 +11,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat)
 ![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=flat)
 
-**[🚀 Live Demo](https://datasty.streamlit.app/)** · **[📂 Source Code](#project-structure)** · **[📊 Methodology](#how-the-dts-score-works)**
+**[🚀Don't read, TRY!](https://datasty.streamlit.app/)** · **[📂 Source Code](#project-structure)** · **[📊 Methodology](#how-the-dts-score-works)**
 
 </div>
 
