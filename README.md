@@ -22,7 +22,7 @@
 - [Overview](#overview)
 - [Problem Statement](#problem-statement)
 - [Why Data Quality Matters](#why-data-quality-matters)
-- [Demo](#demo)
+- [Demo](#demo📸)
 - [Key Features](#key-features)
 - [How It Works](#how-it-works)
 - [How the DTS Score Works](#how-the-dts-score-works)
