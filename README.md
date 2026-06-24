@@ -43,9 +43,9 @@
 
 ## Overview
 
-**DATATSTY** is an end-to-end data quality and readiness assessment platform built in Python and Streamlit.
+**DaTasty** is an end-to-end data quality and readiness assessment platform built in Python and Streamlit.
 
-Before a dataset is used for **Analytics, Business Intelligence, Machine Learning, or Generative AI**, DATATSTY profiles it, audits it across five quality dimensions, scores it with a single composite metric (the **DTS — DATATSTY Trust Score**), cleans it according to configurable rules, and generates an executive-ready Excel report — all in one run, with no code required from the end user.
+Before a dataset is used for **Analytics, Business Intelligence, Machine Learning, or Generative AI**, DaTasty profiles it, audits it across five quality dimensions, scores it with a single composite metric (the **DTS — DaTasty Trust Score**), cleans it according to configurable rules, and generates an executive-ready Excel report — all in one run, with no code required from the end user.
 
 > The core idea: **don't build dashboards or train models on data you haven't audited.** Find the problems before they find you.
 
@@ -64,7 +64,7 @@ Common questions teams struggle to answer quickly:
 - Is it ready to train a model — or to feed into an LLM pipeline?
 - Out of everything wrong with this data, what should be fixed *first*?
 
-Answering these manually is slow, inconsistent, and easy to skip under deadline pressure. Most commercial data-quality platforms that answer these questions are also expensive and out of reach for students, small teams, and individual analysts. DATATSTY is an attempt to make a transparent, rules-based version of that workflow freely accessible.
+Answering these manually is slow, inconsistent, and easy to skip under deadline pressure. Most commercial data-quality platforms that answer these questions are also expensive and out of reach for students, small teams, and individual analysts. DaTasty is an attempt to make a transparent, rules-based version of that workflow freely accessible.
 
 ---
 
@@ -78,7 +78,7 @@ Answering these manually is slow, inconsistent, and easy to skip under deadline 
 | **Generative AI** | LLMs and AI systems produce unreliable outputs when fed unreliable context |
 | **Operations** | Duplicate and inconsistent records create manual rework and inefficiency |
 
-The ceiling of any analysis — however sophisticated — is set by the quality of the data underneath it. DATATSTY exists to raise that floor *before* the analysis starts.
+The ceiling of any analysis — however sophisticated — is set by the quality of the data underneath it. DaTasty exists to raise that floor *before* the analysis starts.
 
 ---
 
@@ -126,9 +126,9 @@ Evaluates the dataset across the five DAMA-aligned data quality dimensions:
 - **Consistency** — formatting and casing inconsistencies across fields
 - **Accuracy Proxy** — statistical outlier detection (IQR method) as a proxy for likely-incorrect values
 
-> **Note:** True accuracy requires an external source of truth. DATATSTY evaluates an *accuracy proxy* via anomaly detection rather than claiming ground-truth accuracy — this distinction is intentional and stated transparently in the scoring.
+> **Note:** True accuracy requires an external source of truth. DaTasty evaluates an *accuracy proxy* via anomaly detection rather than claiming ground-truth accuracy — this distinction is intentional and stated transparently in the scoring.
 
-### 🎯 DATATSTY Trust Score (DTS)
+### 🎯 DaTasty Trust Score (DTS)
 A single 0–100 composite score that summarizes overall dataset readiness, combining all five dimensions into one number you can track over time or compare across datasets.
 
 ### 🧹 Rule-Driven Automated Cleaning
@@ -166,7 +166,7 @@ flowchart TD
     F --> I
 ```
 
-The goal at every stage is the same: **surface issues clearly enough that a human can decide what to do about them.** DATATSTY does not replace domain expertise — it gives domain experts a faster starting point.
+The goal at every stage is the same: **surface issues clearly enough that a human can decide what to do about them.** DaTasty does not replace domain expertise — it gives domain experts a faster starting point.
 
 ---
 
@@ -216,7 +216,7 @@ Each dimension is evaluated independently, then combined into the single DTS sco
 ## Project Structure
 
 ```
-DATATSTY/
+DaTasty/
 ├── main.py                     # CLI entry point
 ├── requirements.txt            # Project dependencies
 ├── config/
@@ -307,7 +307,7 @@ Every run generates outputs:
 
 ## Limitations
 
-DATATSTY is currently designed for **structured, tabular datasets** and works best with clearly defined columns (e.g. customer IDs, names, emails, phone numbers, dates, locations, transaction data).
+DaTasty is currently designed for **structured, tabular datasets** and works best with clearly defined columns (e.g. customer IDs, names, emails, phone numbers, dates, locations, transaction data).
 
 - **Limited domain knowledge** — the platform does not infer industry-specific business rules automatically; rules must be configured.
 - **No external verification** — true accuracy (vs. an accuracy *proxy*) requires a trusted external reference source, which is out of scope today.
