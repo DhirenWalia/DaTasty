@@ -291,7 +291,7 @@ Every run generates outputs:
 | File | Description |
 |---|---|
 | Excel Report | Full audit: profile, quality findings, DTS score, recommendations |
-<img width="1812" height="113" alt="Screenshot 2026-06-24 155018" src="https://github.com/user-attachments/assets/320bf8b3-6ac5-4b4f-98a6-e86f020c1407" />
+| <img width="1812" height="113" alt="Screenshot 2026-06-24 155018" src="https://github.com/user-attachments/assets/320bf8b3-6ac5-4b4f-98a6-e86f020c1407" /> |
 | <img width="682" height="263" alt="Screenshot 2026-06-24 155049" src="https://github.com/user-attachments/assets/7761a0d1-2ece-4be4-8525-ca9cd7ecc13b" /> | <img width="657" height="150" alt="Screenshot 2026-06-24 155234" src="https://github.com/user-attachments/assets/9fa25e72-1ce0-47e1-afea-4e95775cd85b" /> |
 | <img width="1371" height="148" alt="Screenshot 2026-06-24 155502" src="https://github.com/user-attachments/assets/cb9f3d8d-1f79-46dc-8311-154359d989db" /> |-|
 | Cleaned Dataset | Cleaned dataset after all enabled rules are applied |
